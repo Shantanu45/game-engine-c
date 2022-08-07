@@ -27,7 +27,7 @@ void log_output(log_level level, const char* message, ...){
     memset(out_message, 0, sizeof(out_message));
 
     // Format original message.
-    // NOTE: Oddly enough, MS's headers override the GCC/Clang va_list tlype with a "tyypedeg char *" va_list" in some
+    // NOTE: Oddly enough, MS's headers override the GCC/Clang va_list type with a "typedeg char *" va_list" in some
     // cases, and a s result throws a strange error here. THe workaround for now is to just use __builtin_va_list, 
     // which is the type GCC/Clang's va_start expects.
     __builtin_va_list arg_ptr;

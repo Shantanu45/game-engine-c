@@ -1,26 +1,20 @@
 #include <core/logger.h>
 #include <core/asserts.h>
 
-// TODO: Test
-#include <platform/platform.h>
+// TODO: test
+#include <core/application.h>
 
 int main(void){
-    KFATAL("A test message: %f", 3.14f);
-    KERROR("A test message: %f", 3.14f);
-    KWARN("A test message: %f", 3.14f);
-    KINFO("A test message: %f", 3.14f);
-    KDEBUG("A test message: %f", 3.14f);
-    KTRACE("A test message: %f", 3.14f);
+    application_config config;
+    config.start_pos_x = 100;
+    config.start_pos_y = 100;
+    config.start_width = 1280;
+    config.start_height = 720;
+    config.name = "Engine Testbed";
 
-    platform_state state;
-    if (platform_startup(&state, "Test", 100, 100, 1280, 720))
-    {
-        while(true){
-            platform_pump_messages(&state);
-        }
-    }
-    platform_shutdown(&state);
+    application_create(&config);
 
+    application_run();
     //KASSERT(1 == 0);
     return 0;
 }
